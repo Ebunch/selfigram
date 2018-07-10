@@ -134,21 +134,60 @@
             </objects>
             <point key="canvasLocation" x="381.60000000000002" y="305.39730134932535"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="gcG-b8-aLF">
             <objects>
-                <viewController id="3Qf-Nq-2G3" sceneMemberID="viewController">
+                <viewController id="3Qf-Nq-2G3" customClass="ProfileViewController" customModule="selfigram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mvX-VG-U0c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="NpP-xD-XQf">
+                                <rect key="frame" x="82" y="174" width="210" height="180"/>
+                                <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="7su-sv-JkG"/>
+                                    <constraint firstAttribute="height" constant="180" id="ukj-Rt-crc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ioc-l7-xjG">
+                                <rect key="frame" x="148" y="384" width="79" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UyU-Au-Euf">
+                                <rect key="frame" x="44" y="338" width="73" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="81h-Pe-RaJ"/>
+                                    <constraint firstAttribute="width" constant="73" id="bMa-G6-YTZ"/>
+                                </constraints>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="cameraButtonPressed:" destination="3Qf-Nq-2G3" eventType="touchUpInside" id="UJm-LL-uzu"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ioc-l7-xjG" firstAttribute="centerX" secondItem="mvX-VG-U0c" secondAttribute="centerX" id="29z-J8-MM7"/>
+                            <constraint firstItem="UyU-Au-Euf" firstAttribute="top" secondItem="NpP-xD-XQf" secondAttribute="bottom" constant="-16" id="3cg-XE-bqo"/>
+                            <constraint firstItem="NpP-xD-XQf" firstAttribute="leading" secondItem="UyU-Au-Euf" secondAttribute="trailing" constant="-35" id="7A4-mA-gY8"/>
+                            <constraint firstItem="NpP-xD-XQf" firstAttribute="centerX" secondItem="mvX-VG-U0c" secondAttribute="centerX" id="Ao5-G1-0ca"/>
+                            <constraint firstItem="NpP-xD-XQf" firstAttribute="top" secondItem="Ecd-cr-LMT" secondAttribute="top" constant="110" id="ZUt-Za-eaU"/>
+                            <constraint firstItem="Ioc-l7-xjG" firstAttribute="top" secondItem="NpP-xD-XQf" secondAttribute="bottom" constant="30" id="xX4-Y9-o8e"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ecd-cr-LMT"/>
                     </view>
                     <navigationItem key="navigationItem" id="S0h-x6-k4d"/>
+                    <connections>
+                        <outlet property="profileImageView" destination="NpP-xD-XQf" id="0p6-3V-dAa"/>
+                        <outlet property="usernameLabel" destination="Ioc-l7-xjG" id="oFm-Uv-E8o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Wd-K0-KMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1321" y="1076"/>
+            <point key="canvasLocation" x="1320.8" y="1075.4122938530736"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Hrn-0k-Zc7">
@@ -175,5 +214,6 @@
         <image name="Activities" width="25" height="25"/>
         <image name="NewsFeed" width="25" height="25"/>
         <image name="Profile" width="25" height="25"/>
+        <image name="placeholder" width="256" height="256"/>
     </resources>
 </document>
