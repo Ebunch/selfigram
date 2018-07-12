@@ -15,6 +15,8 @@
 		DC2279D120EDB5F10096CFD1 /* selfigramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2279D020EDB5F10096CFD1 /* selfigramTests.swift */; };
 		DC2279DC20EDB5F10096CFD1 /* selfigramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2279DB20EDB5F10096CFD1 /* selfigramUITests.swift */; };
 		DCDDB92520F454ED00A3F07A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDDB92420F454ED00A3F07A /* ProfileViewController.swift */; };
+		DCEDAFF320F7074300C451B6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEDAFF220F7074300C451B6 /* User.swift */; };
+		DCEDAFF520F7096C00C451B6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEDAFF420F7096C00C451B6 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		DC2279DB20EDB5F10096CFD1 /* selfigramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selfigramUITests.swift; sourceTree = "<group>"; };
 		DC2279DD20EDB5F10096CFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCDDB92420F454ED00A3F07A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DCEDAFF220F7074300C451B6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DCEDAFF420F7096C00C451B6 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 			children = (
 				DC2279BB20EDB5F00096CFD1 /* AppDelegate.swift */,
 				DC2279BD20EDB5F00096CFD1 /* ViewController.swift */,
+				DCEDAFF220F7074300C451B6 /* User.swift */,
+				DCEDAFF420F7096C00C451B6 /* Post.swift */,
 				DC2279BF20EDB5F00096CFD1 /* Main.storyboard */,
 				DCDDB92420F454ED00A3F07A /* ProfileViewController.swift */,
 				DC2279C220EDB5F10096CFD1 /* Assets.xcassets */,
@@ -259,9 +265,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCEDAFF320F7074300C451B6 /* User.swift in Sources */,
 				DCDDB92520F454ED00A3F07A /* ProfileViewController.swift in Sources */,
 				DC2279BE20EDB5F00096CFD1 /* ViewController.swift in Sources */,
 				DC2279BC20EDB5F00096CFD1 /* AppDelegate.swift in Sources */,
+				DCEDAFF520F7096C00C451B6 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
