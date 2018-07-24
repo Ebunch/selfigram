@@ -14,6 +14,8 @@
 		DC2279C620EDB5F10096CFD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC2279C420EDB5F10096CFD1 /* LaunchScreen.storyboard */; };
 		DC2279D120EDB5F10096CFD1 /* selfigramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2279D020EDB5F10096CFD1 /* selfigramTests.swift */; };
 		DC2279DC20EDB5F10096CFD1 /* selfigramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2279DB20EDB5F10096CFD1 /* selfigramUITests.swift */; };
+		DC5349FD2106D3E000E48AA9 /* SelfieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5349FC2106D3E000E48AA9 /* SelfieCell.swift */; };
+		DC61422120FD8C6700A3BEF5 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC61422020FD8C6700A3BEF5 /* FeedTableViewController.swift */; };
 		DCDDB92520F454ED00A3F07A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDDB92420F454ED00A3F07A /* ProfileViewController.swift */; };
 		DCEDAFF320F7074300C451B6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEDAFF220F7074300C451B6 /* User.swift */; };
 		DCEDAFF520F7096C00C451B6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEDAFF420F7096C00C451B6 /* Post.swift */; };
@@ -50,6 +52,8 @@
 		DC2279D720EDB5F10096CFD1 /* selfigramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = selfigramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC2279DB20EDB5F10096CFD1 /* selfigramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selfigramUITests.swift; sourceTree = "<group>"; };
 		DC2279DD20EDB5F10096CFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC5349FC2106D3E000E48AA9 /* SelfieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieCell.swift; sourceTree = "<group>"; };
+		DC61422020FD8C6700A3BEF5 /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		DCDDB92420F454ED00A3F07A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DCEDAFF220F7074300C451B6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DCEDAFF420F7096C00C451B6 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				DCEDAFF220F7074300C451B6 /* User.swift */,
 				DCEDAFF420F7096C00C451B6 /* Post.swift */,
 				DC2279BF20EDB5F00096CFD1 /* Main.storyboard */,
+				DC61422020FD8C6700A3BEF5 /* FeedTableViewController.swift */,
+				DC5349FC2106D3E000E48AA9 /* SelfieCell.swift */,
 				DCDDB92420F454ED00A3F07A /* ProfileViewController.swift */,
 				DC2279C220EDB5F10096CFD1 /* Assets.xcassets */,
 				DC2279C420EDB5F10096CFD1 /* LaunchScreen.storyboard */,
@@ -266,6 +272,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCEDAFF320F7074300C451B6 /* User.swift in Sources */,
+				DC61422120FD8C6700A3BEF5 /* FeedTableViewController.swift in Sources */,
+				DC5349FD2106D3E000E48AA9 /* SelfieCell.swift in Sources */,
 				DCDDB92520F454ED00A3F07A /* ProfileViewController.swift in Sources */,
 				DC2279BE20EDB5F00096CFD1 /* ViewController.swift in Sources */,
 				DC2279BC20EDB5F00096CFD1 /* AppDelegate.swift in Sources */,

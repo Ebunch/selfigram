@@ -35,22 +35,54 @@
             </objects>
             <point key="canvasLocation" x="-561" y="-79"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Feed Table View Controller-->
         <scene sceneID="jYC-GP-nq0">
             <objects>
-                <tableViewController id="gWm-Fu-yfH" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mfP-9U-lBr">
+                <tableViewController id="gWm-Fu-yfH" customClass="FeedTableViewController" customModule="selfigram" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mfP-9U-lBr" customClass="Feed">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.35257784718935614" green="1" blue="0.096816427276226635" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeTableCellId" id="C1a-Am-j0B">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="196" id="C1a-Am-j0B" customClass="SelfieCell" customModule="selfigram" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="196"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C1a-Am-j0B" id="Zq0-dm-iNx">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C1a-Am-j0B" id="Zq0-dm-iNx">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="195.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLI-re-ZBu">
+                                            <rect key="frame" x="51" y="11" width="240" height="128"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWx-ER-eX4">
+                                            <rect key="frame" x="88" y="154" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGx-di-vld">
+                                            <rect key="frame" x="193" y="174" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="TRn-Em-4ia"/>
+                                                <constraint firstAttribute="height" constant="21" id="cFH-Ii-Yeh"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="VGx-di-vld" firstAttribute="leading" secondItem="Zq0-dm-iNx" secondAttribute="leading" constant="190" id="Yt9-wq-U82"/>
+                                        <constraint firstAttribute="trailing" secondItem="VGx-di-vld" secondAttribute="trailing" constant="150" id="uvD-zC-LTw"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="selfieImageView" destination="NLI-re-ZBu" id="B42-Tc-Q9Z"/>
+                                    <outlet property="selfiecellComment" destination="VGx-di-vld" id="w2D-Mf-Zr5"/>
+                                    <outlet property="selfiecellLabel" destination="HWx-ER-eX4" id="Bzj-US-MGR"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -93,10 +125,10 @@
             </objects>
             <point key="canvasLocation" x="1320.8" y="305.39730134932535"/>
         </scene>
-        <!--News Feed-->
+        <!--Table View Controller-->
         <scene sceneID="PDA-3J-0UR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QkP-Cg-eHd" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QkP-Cg-eHd" userLabel="Table View Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="News Feed" image="NewsFeed" id="zSo-ef-E56"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xgf-BB-2Bm">
