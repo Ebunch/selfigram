@@ -6,18 +6,64 @@
 //  Copyright © 2018 Inderpal Lehal. All rights reserved.
 //
 
+
+import Parse
+
+
+
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Initialize Parse.
+        // Replace YOUR_APP_ID and URL_TO_YOUR_PARSE_SERVER with the values you chose when you installed your Parse server.
+        let configuration = ParseClientConfiguration { clientConfiguration in
+            clientConfiguration.applicationId = "ebunch825"
+            clientConfiguration.server = "https://inder-iosprogram.herokuapp.com/parse"
+        }
+        Parse.initialize(with: configuration)
+        
+        
+        let user = PFUser()
+        let username = "paul"
+        let password = "paul"
+        user.username = username
+        user.password = password
+        user.signUpInBackground(block: { (success, error) -> Void in
+            if success {
+                print("successfully signuped a user")
+            }else {
+                PFUser.logInWithUsername(inBackground: username, password: password, block: { (user, error) -> Void in
+                    if let user = user {
+                        print("successfully logged in \(user)")
+                    }
+                })
+            }
+        })
+        
+        let testObject = PFObject(className: "TestObject")
+        testObject["foo"] = "bar"
+        testObject.saveInBackground(block: { (success: Bool, error: Error?) -> Void in
+            
+            
+            print("Object has been saved.")
+        })
+        
+        
+        
+        
+        
+        
         return true
     }
+
+
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
