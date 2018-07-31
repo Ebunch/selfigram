@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+
 
 class FeedTableViewController: UITableViewController {
     
@@ -14,10 +16,25 @@ class FeedTableViewController: UITableViewController {
         var posts = [Post]()
   
 
+    
+     override func viewDidLoad(){
+        if let query = Post.query() {
+            query.order(byDescending: "createdAt")
+            query.includeKey("user")
+            if let posts = posts as? [Post]{
+                self.posts = posts
+                self.tableView.reloadData()
+                
+            }
 
-    override func viewDidLoad() {
+            query.findObjectsInBackground(block: { (posts, error) -> Void in
+                // this block of code will run when the query is complete
+            })
+        }
         super.viewDidLoad()
-        let me = User(aUsername: "paul", aProfileImage: UIImage(named: "Grumpy-Cat")!)
+      
+        var me: User = User(aUsername: "paul", aProfileImage: UIImage(named: "Grumpy-Cat")!)
+
        // let post0 = Post(imageURL: UIImage(named: "Grumpy-Cat")!, user: me, comment: "Grumpy Cat 0")
 //        let post1 = Post(image: UIImage(named: "Grumpy-Cat")!, user: me, comment: "Grumpy Cat 1")
 //        let post2 = Post(image: UIImage(named: "Grumpy-Cat")!, user: me, comment: "Grumpy Cat 2")
@@ -26,52 +43,52 @@ class FeedTableViewController: UITableViewController {
 //
 //
 //        posts = [post0, post1, post2, post3, post4]
-        let url = URL(string: "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=4aee1e740c3fe2d9570cf200451bd017&tags=cat")!
+       // let url = URL(string: "https://www.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=4aee1e740c3fe2d9570cf200451bd017&tags=cat")!
 
-        let task = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) -> Void in
-
-            
-            // convert Data to JSON
-            if let jsonUnformatted = try? JSONSerialization.jsonObject(with: data!, options: []) {
-
-                let json = jsonUnformatted as? [String : AnyObject]
-                let photosDictionary = json?["photos"] as? [String : AnyObject]
-                if let photosArray = photosDictionary?["photo"] as? [[String : AnyObject]] {
-                    
-                    for photo in photosArray {
-                        
-                        if let farmID = photo["farm"] as? Int,
-                            let serverID = photo["server"] as? String,
-                            let photoID = photo["id"] as? String,
-                            let secret = photo["secret"] as? String {
-                            
-                            let photoURLString = "https://farm\(farmID).staticflickr.com/\(serverID)/\(photoID)_\(secret).jpg"
-                            print(photoURLString)
-                            if let photoURL = URL(string: photoURLString) {
-                                
-                                let me = User(aUsername: "sam", aProfileImage: UIImage(named: "Grumpy-Cat")!)
-                                let post = Post(imageURL: photoURL, user: me, comment: "A Flickr Selfie")
-                                self.posts.append(post)
-                            }
-                        }
-                        
-                    }
-                    
-                    // We use OperationQueue.main because we need update all UI elements on the main thread.
-                    // This is a rule and you will see this again whenever you are updating UI.
-                    OperationQueue.main.addOperation {
-                        self.tableView.reloadData()
-                    }
-                }
-                
-            }else{
-                print("error with response data")
-            }
-            
-        })
+//        let task = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) -> Void in
+//
+//
+//            // convert Data to JSON
+//            if let jsonUnformatted = try? JSONSerialization.jsonObject(with: data!, options: []) {
+//
+//                let json = jsonUnformatted as? [String : AnyObject]
+//                let photosDictionary = json?["photos"] as? [String : AnyObject]
+//                if let photosArray = photosDictionary?["photo"] as? [[String : AnyObject]] {
+//
+//                    for photo in photosArray {
+//
+//                        if let farmID = photo["farm"] as? Int,
+//                            let serverID = photo["server"] as? String,
+//                            let photoID = photo["id"] as? String,
+//                            let secret = photo["secret"] as? String {
+//
+//                            let photoURLString = "https://farm\(farmID).staticflickr.com/\(serverID)/\(photoID)_\(secret).jpg"
+//                            print(photoURLString)
+//                            if let photoURL = URL(string: photoURLString) {
+//
+//                                let me = User(aUsername: "sam", aProfileImage: UIImage(named: "Grumpy-Cat")!)
+//                                let post = Post(image: photoURL, user: me, comment: "A Flickr Selfie")
+//                                self.posts.append(post)
+//                            }
+//                        }
+//
+//                    }
+//
+//                    // We use OperationQueue.main because we need update all UI elements on the main thread.
+//                    // This is a rule and you will see this again whenever you are updating UI.
+//                    OperationQueue.main.addOperation {
+//                        self.tableView.reloadData()
+//                    }
+//                }
+//
+//            }else{
+//                print("error with response data")
+//            }
+//
+//        })
         
         //start or restart
-        task.resume()
+       // task.resume()
 
     }
 
@@ -82,6 +99,58 @@ class FeedTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    @IBAction func Camerabutton(_ sender: UIBarButtonItem)
+        {
+            
+            let pickerController = UIImagePickerController()
+            
+            pickerController.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+                
+            
+            
+            if TARGET_OS_SIMULATOR == 1 {
+                
+                pickerController.sourceType = .photoLibrary
+            } else {
+                
+                pickerController.sourceType = .camera
+                pickerController.cameraDevice = .front
+                pickerController.cameraCaptureMode = .photo
+            }
+            
+            self.present(pickerController, animated: true, completion: nil)
+        }
+    
+    
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+            
+            if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                
+                
+                if let imageData = UIImageJPEGRepresentation(image, 0.9),
+                    let imageFile = PFFile(data: imageData){
+                    
+                    
+                    let post = Post(image: imageFile, user: PFUser.current()!, comment: "A Selfie")
+
+                    post.saveInBackground(block: { (success, error) -> Void in
+                        if success {
+                            print("Post successfully saved in Parse")
+                            
+                            self.posts.insert(post, at: 0)
+                            
+                            let indexPath = IndexPath(row: 0, section: 0)
+                            self.tableView.insertRows(at: [indexPath], with: .automatic)
+                            
+                        }
+                    })
+                }
+            }
+            
+            dismiss(animated: true, completion: nil)
+            
+        }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -97,7 +166,8 @@ class FeedTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! SelfieCell
         
         let post = self.posts[indexPath.row]
-        
+
+
         
         // I've added this line to prevent flickering of images
         // We are inside the cellForRowAtIndexPath method that gets called everything we layout a cell
@@ -105,24 +175,17 @@ class FeedTableViewController: UITableViewController {
         // This always resets the image to blank, waits for the image to download, and then sets it
         cell.selfieImageView.image = nil
         
-        let task = URLSession.shared.downloadTask(with: post.imageURL) { (url, response, error) -> Void in
-            
-            if let imageURL = url, let imageData = try? Data(contentsOf: imageURL) {
-                OperationQueue.main.addOperation {
-                    
-                    cell.selfieImageView.image = UIImage(data: imageData)
-                    
-                }
+        let imageFile = post.image
+        imageFile.getDataInBackground(block: {(data, error) -> Void in
+            if let data = data {
+                let image = UIImage(data: data)
+                cell.selfieImageView.image = image
             }
-            
-        }
-        
-        task.resume()
-        
-        
+        })
         
         cell.selfiecellLabel.text = post.user.username
-        cell.selfiecellComment.text = post.comment
+        cell.selfiecellLabel.text = post.comment
+
         
         return cell
     }

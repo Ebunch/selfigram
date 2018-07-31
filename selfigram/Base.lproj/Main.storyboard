@@ -90,7 +90,13 @@
                             <outlet property="delegate" destination="gWm-Fu-yfH" id="i3i-AQ-kh2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="P2m-TK-FkN"/>
+                    <navigationItem key="navigationItem" id="P2m-TK-FkN">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Profile" id="t2r-tM-v3p" userLabel="CameraButton">
+                            <connections>
+                                <action selector="Camerabutton:" destination="gWm-Fu-yfH" id="9pN-vR-sh5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzd-Wt-YL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

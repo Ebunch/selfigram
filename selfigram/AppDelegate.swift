@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             clientConfiguration.applicationId = "ebunch825"
             clientConfiguration.server = "https://inder-iosprogram.herokuapp.com/parse"
         }
+        
+        Post.registerSubclass()
+
         Parse.initialize(with: configuration)
         
         
